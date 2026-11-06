@@ -1,14 +1,26 @@
 .main {
+    height: 100vh;
 }
 .mainNav {
+    background-color: aqua;
+    display: flex;
+    justify-content: space-evenly;
 }
 .navLogo {
 }
 .navClinic {
 }
 .containerForm {
+    background-color: blueviolet;
+    display: flex;
+    justify-content: center;
 }
 .form {
+    background-color: brown;
+    display: flex;
+    text-align: left;
+    flex-direction: column;
+    padding: 36px 40px;
 }
 .formImg {
 }
@@ -17,6 +29,7 @@
 .formtitle {
 }
 .formInput {
+    width: 33;
 }
 .formButton {
 }
