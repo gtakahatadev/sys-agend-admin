@@ -1,8 +1,12 @@
-import Login from "./pages/Login"
-export default function App (){
-  return(
+import { useState } from "react";
+import Login from "./pages/Login";
+
+export default function App() {
+  const [login, setLogin] = useState(true);
+
+  return (
     <>
-    <Login/>
+      <Login aoCriarConta={() => setLogin(false)} />
     </>
-  )
+  );
 }

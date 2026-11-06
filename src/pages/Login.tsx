@@ -1,5 +1,10 @@
 import "../css/Login.css";
-export default function Login() {
+
+interface Login{
+aoCriarConta: ()=> void
+}
+
+export default function Login(props: Login) {
   return (
     <>
       <main className="main">
@@ -19,12 +24,14 @@ export default function Login() {
             <p className="formParag">
               Entre para acessar a área administrativa da clínica.
             </p>
+            <label htmlFor="">E-mail</label>
             <input
               type="email"
               placeholder="voce@clinica.com.br"
               className="formInput"
               id="formEmail"
             />
+            <label htmlFor="">Senha</label>
             <input
               type="password"
               placeholder="Digite sua senha"
