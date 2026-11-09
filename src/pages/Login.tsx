@@ -1,10 +1,9 @@
 import "../css/Login.css";
-
-interface Login{
-aoCriarConta: ()=> void
+interface LoginProps {
+  aoCriarConta: () => void;
 }
 
-export default function Login(props: Login) {
+export default function Login(props: LoginProps) {
   return (
     <>
       <main className="main">
@@ -41,9 +40,9 @@ export default function Login(props: Login) {
             <button className="formButton">Entrar</button>
             <span className="containerSignin">
               <p className="signinLabel">Recebeu um convite?</p>
-              <a href="" className="siginButton">
+              <button className="siginButton" onClick={props.aoCriarConta}>
                 Crie sua conta
-              </a>
+              </button>
             </span>
           </form>
         </div>

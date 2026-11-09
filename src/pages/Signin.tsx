@@ -1,5 +1,9 @@
 import "../css/Signin.css";
-export default function Signin() {
+interface SigninProps {
+  aoEntrar: () => void;
+}
+
+export default function Signin(props: SigninProps) {
   return (
     <>
       <main className="main">
@@ -51,7 +55,9 @@ export default function Signin() {
             />
             <button className="formButton">Criar conta</button>
             <span className="containerSignin">
-              <p className="signinLabel">Já possuí uma conta?</p>
+              <p className="signinLabel" onClick={props.aoEntrar}>
+                Já possuí uma conta?
+              </p>
               <a href="" className="siginButton">
                 Entrar
               </a>
