@@ -1,4 +1,4 @@
-import "../css/Login.css";
+import "../css/global.css";
 interface LoginProps {
   aoCriarConta: () => void;
 }

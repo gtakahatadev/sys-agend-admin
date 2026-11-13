@@ -1,0 +1,11 @@
+.mainNav {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 50px;
+    margin-bottom: 64px;
+    padding-top: 20px;
+}
+.form {
+
+}
