@@ -13,14 +13,27 @@ export default function Signin(props: SigninProps) {
     try {
       const request = await fetch("http://localhost:3000/admin", {
         method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({formName, formEmail, formPassword, formConfirmPassword}),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          formName,
+          formEmail,
+          formPassword,
+          formConfirmPassword,
+        }),
       });
       const response = await request.json();
 
-    } 
-    catch (error){
+      //colocar um feedback para o usuário com o componente de carregamento
 
+      if (!request.ok) {
+        throw new Error("Erro ao enviar informações");
+      }
+
+      alert(response.message);
+    } catch (error) {
+      alert("Servidor indisponível");
+      //implementar melhoria no tratamento de erro
+      console.error(error);
     }
   }
 
@@ -36,7 +49,13 @@ export default function Signin(props: SigninProps) {
           </a>
         </nav>
         <div className="containerForm">
-          <form action="" className="form">
+          <form
+            onSubmit={(event) => {
+              event.preventDefault();
+              requestBackend();
+            }}
+            className="form"
+          >
             <img src="" alt="" className="formImg" />
             <p className="formParag">Acesso administrativo</p>
             <h3 className="formtitle">Crie sua conta</h3>
@@ -82,9 +101,9 @@ export default function Signin(props: SigninProps) {
               <p className="signinLabel" onClick={props.aoEntrar}>
                 Já possuí uma conta?
               </p>
-              <a href="" className="siginButton">
+              <button type="submit" className="siginButton">
                 Entrar
-              </a>
+              </button>
             </span>
           </form>
         </div>
