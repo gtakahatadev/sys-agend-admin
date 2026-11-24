@@ -2,6 +2,7 @@ import express, { type Express, type Request, type Response } from "express";
 import cors from "cors";
 import bcrypt from "bcryptjs";
 const porta = 3000;
+import db from "./database.ts";
 
 const app: Express = express();
 app.use(cors());
@@ -34,10 +35,14 @@ app.post("/admin", async (req: Request, res: Response) => {
   }
 
   try {
-    const senhaMash = await bcrypt.hash(formPassword, 10);
+    const senhaHash = await bcrypt.hash(formPassword, 10);
 
-    console.log("hash da senha: ", senhaMash);
+    console.log("hash da senha: ", senhaHash);
     res.json({ message: "Dados recebidos com sucesso!" });
+
+    db.prepare(
+      "INSERT INTO clients (nome, email, senha_hash) VALUES (?, ?, ?)",
+    ).run(formName, formEmail, senhaHash);
   } catch (error) {
     res.status(500).json({ message: "Não foi possível processar a senha" });
   }
