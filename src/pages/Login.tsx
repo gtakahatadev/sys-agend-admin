@@ -1,9 +1,32 @@
 import "../css/global.css";
+import { useState } from "react";
+
 interface LoginProps {
   aoCriarConta: () => void;
 }
 
 export default function Login(props: LoginProps) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  async function acessSystem() {
+    try {
+      const response = await fetch("http://localhost:3000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const dataToken = await response.json();
+//nessa variavel estou armazenando dados da autorização do token e preciso enviar uma nova autorização ao backend para acessar a rota protegida
+
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   return (
     <>
       <main className="main">
@@ -28,14 +51,14 @@ export default function Login(props: LoginProps) {
               type="email"
               placeholder="voce@clinica.com.br"
               className="formInput"
-              id="formEmail"
+              value={email}
             />
             <label htmlFor="">Senha</label>
             <input
               type="password"
               placeholder="Digite sua senha"
               className="formInput"
-              id="formPassword"
+              value={password}
             />
             <button className="formButton">Entrar</button>
             <span className="containerSignin">
